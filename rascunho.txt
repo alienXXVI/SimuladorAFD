@@ -1,2 +1,2 @@
 
-- implementar reset para poder carregar arquivos sem encerrar o programa
+proximo passo: implementar reset()

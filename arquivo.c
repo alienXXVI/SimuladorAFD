@@ -132,7 +132,8 @@ GRAMATICA* formar_gramatica(char *arquivo) {
     c = c + 5;
     estado_destino = *c - '0';
 
-    inserir_transicao(gramatica, estado_origem, estado_destino, simbolo);
+    if(inserir_transicao(gramatica, estado_origem, estado_destino, simbolo))
+        return NULL;
 
     printf("(AFD carregado)\n");
 

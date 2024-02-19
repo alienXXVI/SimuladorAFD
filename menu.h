@@ -6,3 +6,10 @@ Podemos fazer o menu principal, onde a gente pode
 - imprimir a gramatica
     pode usar "void imprimir_gramatica(GRAMATICA *gramatica)"
 */
+
+#ifndef MENU
+#define MENU
+
+
+
+#endif
