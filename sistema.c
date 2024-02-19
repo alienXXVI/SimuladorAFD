@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "sistema.h"
 
 // Conta o número de elementos de um vetor
@@ -28,7 +29,8 @@ int contar_tamanho_string(char *string) {
 GRAMATICA* criar_gramatica(char *alfabeto, int *estados, int *finais) {
     GRAMATICA *gramatica = (GRAMATICA*) malloc (sizeof(GRAMATICA));
 
-    gramatica->alfabeto = alfabeto;
+    gramatica->alfabeto = malloc(sizeof(char) * 100);
+    strcpy(gramatica->alfabeto, alfabeto);
     gramatica->estados = estados;
     gramatica->finais = finais;
 
@@ -82,9 +84,8 @@ void imprimir_gramatica(GRAMATICA *gramatica) {
     int tamanho;
 
     printf("\nAlfabeto: ");
-    tamanho = contar_tamanho_string(gramatica->alfabeto);
-    for(int i = 0; i < tamanho; i++)
-        printf("%c ", gramatica->alfabeto[i]);
+    for(char* c = gramatica->alfabeto; *c != 0; c++)
+        printf("%c ", *c);
 
     printf("\nEstados: ");
     tamanho = contar_tamanho_vetor(gramatica->estados);

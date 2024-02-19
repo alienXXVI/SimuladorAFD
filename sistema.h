@@ -23,6 +23,16 @@ typedef struct{
 
 // ----------- SISTEMA -----------
 
+// Conta o número de elementos de um vetor
+// Entrada: ponteiro para um vetor que termina com -1
+// Saída: número de elementos
+int contar_tamanho_vetor(int *vetor);
+
+// Conta o número de elementos de um string
+// Entrada: ponteiro para um string que termina com -1
+// Saída: número de elementos
+int contar_tamanho_string(char *string);
+
 // Constrói a especificação da gramática
 // Entrada: ponteiro para alfabeto, estados e finais
 // Saída: nenhuma

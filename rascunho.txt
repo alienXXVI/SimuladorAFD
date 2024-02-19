@@ -1,2 +1,5 @@
 - implementar um verificador na inserção para não permitir transições não deterministicas
 - implementar reset para poder carregar arquivos sem encerrar o programa
+
+parei em:
+- tipo do vetor para receber a função de ler alfabeto em arquivo.c

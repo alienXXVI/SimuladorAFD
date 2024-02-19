@@ -24,7 +24,6 @@ int main() {
 
     gramatica = formar_gramatica("afd.txt");
     imprimir_gramatica(gramatica);
-    testar_palavra()
 
     return 0;
 }
