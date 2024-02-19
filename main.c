@@ -3,27 +3,17 @@
 #include "arquivo.h"
 
 
-// bacca
+// ab00cb
+// abbac
+// @
 int main() {
-    // int estados[] = {0, 1, 2, -1};
-    // char alfabeto[] = {'a', 'b', 'c'};
-    // int finais[] = {2, -1};
     GRAMATICA *gramatica = NULL;
 
-    // inserir_transicao(gramatica, 0, 2, 'a');
-    // inserir_transicao(gramatica, 0, 0, 'b');
-    // inserir_transicao(gramatica, 1, 2, 'c');
-    // inserir_transicao(gramatica, 1, 0, 'a');
-    // inserir_transicao(gramatica, 2, 2, 'c');
-    // inserir_transicao(gramatica, 2, 1, 'a');
-    // inserir_transicao(gramatica, 2, 0, 'b');
-
-    // imprimir_gramatica(gramatica);
-
-    // testar_palavra(gramatica, "bacca");
-
     gramatica = formar_gramatica("afd.txt");
+    if(!gramatica)
+        printf("\n(Erro na formacao da gramatica)\n");
     imprimir_gramatica(gramatica);
+    testar_palavra(gramatica, "@");
 
     return 0;
 }

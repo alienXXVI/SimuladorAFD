@@ -40,8 +40,8 @@ GRAMATICA* criar_gramatica(char *alfabeto, int *estados, int *finais);
 
 // Insere uma transição na gramática
 // Entrada: ponteiro para a gramática, estado de onde sai a transição, estado para onde vai e o simbolo lido
-// Saída: nenhuma
-void inserir_transicao(GRAMATICA *gramatica, int estado_origem, int estado_destino, char simbolo);
+// Saída: 0 se o processo foi um sucesso, 1 se ocorreu erro nas inserções
+int inserir_transicao(GRAMATICA *gramatica, int estado_origem, int estado_destino, char simbolo);
 
 // Imprime a gramática e suas transições
 // Entrada: ponteiro para a gramática
