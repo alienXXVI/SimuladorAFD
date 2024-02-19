@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "sistema.h"
 #include "arquivo.h"
+#include "menu.h"
 
 
 // ab00cb
@@ -9,11 +10,8 @@
 int main() {
     GRAMATICA *gramatica = NULL;
 
-    gramatica = formar_gramatica("afd.txt");
-    if(!gramatica)
-        printf("\n(Erro na formacao da gramatica)\n");
-    imprimir_gramatica(gramatica);
-    testar_palavra(gramatica, "@");
+    imprimir_logo();
+    menu_principal();
 
     return 0;
 }

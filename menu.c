@@ -1,17 +1,10 @@
-/*
-Podemos fazer o menu principal, onde a gente pode
-- carregar um novo arquivo de texto
-- testar palavras
-    pode usar "void testar_palavra(GRAMATICA *gramatica, char *palavra)"
-- imprimir a gramatica
-    pode usar "void imprimir_gramatica(GRAMATICA *gramatica)"
-*/
-
 #include <stdio.h>
+#include <stdlib.h>
 #include "menu.h"
 #include "sistema.h"
 #include "arquivo.h"
 
+// Imprime a logo do program
 void imprimir_logo() {
   printf(" __                                 \n"
            "(_  o __     |  _  _| _  __    _| _ \n"
@@ -24,8 +17,11 @@ void imprimir_logo() {
            "		\\_| |_/\\_|   |___/\n\n");
 }
 
+// Lê o arquivo carregado na pasta do programa e guarda as especificações
+// Entrada: ponteiro para a estrutura
+// Saída: estrutura atualizada
 GRAMATICA* ler_arquivo(GRAMATICA *gramatica) {
-    char* arquivo;
+    char arquivo[20];
 
     printf("\nDigite o nome do arquivo.extensao:\n"
            "> ");
@@ -39,12 +35,15 @@ GRAMATICA* ler_arquivo(GRAMATICA *gramatica) {
     return gramatica;
 }
 
+// Testa palavras no AFD já carregado
+// Entrada: ponteiro para a estrutura de AFD
+// Saída: nenhuma
 void testar_palavras(GRAMATICA *gramatica) {
     int opcao = 1;
-    char *palavra;
+    char palavra[20];
 
     while(opcao) {
-        printf("1 - Digitar a palavra\n"
+        printf("\n1 - Digitar a palavra\n"
                "0 - Voltar\n"
                "> ");
         
@@ -68,7 +67,10 @@ void testar_palavras(GRAMATICA *gramatica) {
     }
 }
 
-GRAMATICA* resetar(GRAMATICA *gramatica) {
+// Reseta a memória ds estrutura para reutilização
+// Entrada: ponteiro para a estrutura
+// Saída: nenhuma
+void resetar(GRAMATICA *gramatica) {
     int tamanho = contar_tamanho_vetor(gramatica->estados);
 
     free(gramatica->alfabeto);
@@ -77,8 +79,12 @@ GRAMATICA* resetar(GRAMATICA *gramatica) {
 
     for(int i = 0; i < tamanho; i++)
         free(gramatica->transicoes[i]);
+
+    free(gramatica->transicoes);
+    free(gramatica);
 }
 
+// Chama o menu com as opções principais
 void menu_principal() {
     int opcao = 1;
     GRAMATICA *gramatica = NULL;
@@ -98,15 +104,25 @@ void menu_principal() {
                     gramatica = ler_arquivo(gramatica);
                     break;
 
-               case 2:
+                case 2:
+                    imprimir_gramatica(gramatica);
+                    break;
+
+               case 3:
                     testar_palavras(gramatica);
                     break;
 
-                case 3:
-                    gramatica = resetar(gramatica);
+                case 4:
+                    resetar(gramatica);
+                    break;
+
+                case 0:
+                    printf("\n(Programa encerrado\n");
+                    break;
                
                default:
-                break;
+                    printf("\n(Numero invalido)\n");
+                    break;
                }
     }
 }
