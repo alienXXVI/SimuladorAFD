@@ -73,15 +73,21 @@ void testar_palavras(GRAMATICA *gramatica) {
 void resetar(GRAMATICA *gramatica) {
     int tamanho = contar_tamanho_vetor(gramatica->estados);
 
-    free(gramatica->alfabeto);
-    free(gramatica->estados);
-    free(gramatica->finais);
+    gramatica->alfabeto = NULL;
+    gramatica->estados = NULL;
+    gramatica->finais = NULL;
 
-    for(int i = 0; i < tamanho; i++)
-        free(gramatica->transicoes[i]);
+    for(int i = 0; i < tamanho; i++) {
+        while(gramatica->transicoes[i] != NULL) {
+            struct no *l = gramatica->transicoes[i]->prox;
+            free(gramatica->transicoes[i]);
+            gramatica->transicoes[i] = l;
+        }
+    }
 
     free(gramatica->transicoes);
     free(gramatica);
+    gramatica = NULL;
 }
 
 // Chama o menu com as opções principais
